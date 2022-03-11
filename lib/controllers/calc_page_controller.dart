@@ -63,6 +63,13 @@ class CalcPageController extends StateNotifier<CalcPageState> {
     state = state.copyWith(calcType: CALC_TYPE.div);
   }
 
+  /// 最後に入力した数字を消す
+  void backSpace() {
+    var displayNum = state.displayNum;
+    displayNum = (displayNum / 10).floor().toDouble();
+    state = state.copyWith(displayNum: displayNum);
+  }
+
   /// 表示されている数字のみをクリア
   void clear() {
     state = state.copyWith(displayNum: 0);

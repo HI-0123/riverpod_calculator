@@ -83,7 +83,7 @@ class CalcPage extends StatelessWidget {
                     ),
                     FunctionButton(
                       "BS",
-                      onPressed: () {},
+                      onPressed: notifier.backSpace,
                     ),
                     FunctionButton(
                       "＝",
