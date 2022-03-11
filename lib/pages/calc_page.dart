@@ -23,9 +23,29 @@ class CalcPage extends StatelessWidget {
                 const SizedBox(height: 8.0),
                 Row(
                   children: [
-                    NumButton(7),
-                    NumButton(8),
-                    NumButton(9),
+                    FunctionButton(
+                      "C",
+                      onPressed: () {},
+                    ),
+                    FunctionButton(
+                      "AC",
+                      onPressed: () {},
+                    ),
+                    FunctionButton(
+                      "％",
+                      onPressed: () {},
+                    ),
+                    FunctionButton(
+                      "÷",
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const NumButton(7),
+                    const NumButton(8),
+                    const NumButton(9),
                     FunctionButton(
                       "×",
                       onPressed: () {},
@@ -34,9 +54,9 @@ class CalcPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    NumButton(4),
-                    NumButton(5),
-                    NumButton(6),
+                    const NumButton(4),
+                    const NumButton(5),
+                    const NumButton(6),
                     FunctionButton(
                       "−",
                       onPressed: () {},
@@ -45,9 +65,9 @@ class CalcPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    NumButton(1),
-                    NumButton(2),
-                    NumButton(3),
+                    const NumButton(1),
+                    const NumButton(2),
+                    const NumButton(3),
                     FunctionButton(
                       "＋",
                       onPressed: () {},
@@ -56,7 +76,7 @@ class CalcPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    NumButton(0),
+                    const NumButton(0),
                     FunctionButton(
                       ".",
                       onPressed: () {},
