@@ -20,7 +20,7 @@ class NumButton extends StatelessWidget {
             child: Text(
               num.toInt().toString(),
               style: const TextStyle(
-                fontSize: 16.0,
+                fontSize: 24.0,
               ),
             ),
           ),

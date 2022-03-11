@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -28,5 +29,25 @@ final calcPageProvider =
 class CalcPageController extends StateNotifier<CalcPageState> {
   CalcPageController() : super(const CalcPageState());
 
-  void display(double num) {}
+  void display(double num) {
+    var displayNum = state.displayNum;
+    if (displayNum.abs().toString().length < 10) {
+      displayNum = displayNum * 10;
+      if (displayNum == 0) {
+        state = state.copyWith(displayNum: num);
+      } else if (displayNum > 0) {
+        state = state.copyWith(displayNum: displayNum + num);
+      } else if (displayNum < 0) {
+        state = state.copyWith(displayNum: displayNum - num);
+      }
+    }
+  }
+
+  void clear() {
+    state = state.copyWith(displayNum: 0);
+  }
+
+  void allClear() {
+    state = state.copyWith(calcNum: 0, displayNum: 0);
+  }
 }

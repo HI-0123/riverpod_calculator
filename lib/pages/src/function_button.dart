@@ -20,7 +20,7 @@ class FunctionButton extends StatelessWidget {
         child: Text(
           mark,
           style: const TextStyle(
-            fontSize: 16.0,
+            fontSize: 24.0,
           ),
         ),
       ),

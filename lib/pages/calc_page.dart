@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_calculator/controllers/calc_page_controller.dart';
+import 'package:riverpod_calculator/pages/src/calc_display.dart';
 import 'package:riverpod_calculator/pages/src/function_button.dart';
 import 'package:riverpod_calculator/pages/src/num_button.dart';
 
@@ -12,24 +13,23 @@ class CalcPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Consumer(builder: (context, ref, _) {
-          final displayNum =
-              ref.watch(calcPageProvider.select((s) => s.stringDisplayNum));
+          final notifier = ref.read(calcPageProvider.notifier);
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(displayNum),
+                const CalcDisplay(),
                 const SizedBox(height: 8.0),
                 Row(
                   children: [
                     FunctionButton(
                       "C",
-                      onPressed: () {},
+                      onPressed: notifier.clear,
                     ),
                     FunctionButton(
                       "AC",
-                      onPressed: () {},
+                      onPressed: notifier.allClear,
                     ),
                     FunctionButton(
                       "％",
