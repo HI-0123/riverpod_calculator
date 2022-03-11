@@ -37,7 +37,7 @@ class CalcPage extends StatelessWidget {
                     ),
                     FunctionButton(
                       "÷",
-                      onPressed: () {},
+                      onPressed: notifier.division,
                     ),
                   ],
                 ),
@@ -48,7 +48,7 @@ class CalcPage extends StatelessWidget {
                     const NumButton(9),
                     FunctionButton(
                       "×",
-                      onPressed: () {},
+                      onPressed: notifier.multiplication,
                     ),
                   ],
                 ),
@@ -59,7 +59,7 @@ class CalcPage extends StatelessWidget {
                     const NumButton(6),
                     FunctionButton(
                       "−",
-                      onPressed: () {},
+                      onPressed: notifier.subtraction,
                     ),
                   ],
                 ),
@@ -70,7 +70,7 @@ class CalcPage extends StatelessWidget {
                     const NumButton(3),
                     FunctionButton(
                       "＋",
-                      onPressed: () {},
+                      onPressed: notifier.addition,
                     ),
                   ],
                 ),

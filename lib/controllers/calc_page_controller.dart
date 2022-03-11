@@ -43,10 +43,32 @@ class CalcPageController extends StateNotifier<CalcPageState> {
     }
   }
 
+  /// 足し算
+  void addition() {
+    state = state.copyWith(calcType: CALC_TYPE.add);
+  }
+
+  /// 引き算
+  void subtraction() {
+    state = state.copyWith(calcType: CALC_TYPE.sub);
+  }
+
+  /// 掛け算
+  void multiplication() {
+    state = state.copyWith(calcType: CALC_TYPE.multi);
+  }
+
+  /// 割り算
+  void division() {
+    state = state.copyWith(calcType: CALC_TYPE.div);
+  }
+
+  /// 表示されている数字のみをクリア
   void clear() {
     state = state.copyWith(displayNum: 0);
   }
 
+  /// 表示されている数字、計算結果もクリアする
   void allClear() {
     state = state.copyWith(calcNum: 0, displayNum: 0);
   }
