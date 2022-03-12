@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -31,7 +30,11 @@ class CalcPageController extends StateNotifier<CalcPageState> {
 
   void display(double num) {
     var displayNum = state.displayNum;
+    final calcType = state.calcType;
     if (displayNum.abs().toString().length < 10) {
+      if (calcType != null) {
+        state = state.copyWith(displayNum: num, calcNum: 0);
+      }
       displayNum = displayNum * 10;
       if (displayNum == 0) {
         state = state.copyWith(displayNum: num);
@@ -45,29 +48,90 @@ class CalcPageController extends StateNotifier<CalcPageState> {
 
   /// 足し算
   void addition() {
-    state = state.copyWith(calcType: CALC_TYPE.add);
+    final displayNum = state.displayNum;
+    final calcNum = state.calcNum;
+    if (calcNum != 0) {}
+    final calcResult = calcNum != 0 ? calcNum + displayNum : displayNum;
+    state = state.copyWith(
+      calcNum: calcResult,
+      displayNum: calcResult,
+      calcMark: "➕",
+      calcType: CALC_TYPE.add,
+    );
   }
 
   /// 引き算
   void subtraction() {
-    state = state.copyWith(calcType: CALC_TYPE.sub);
+    final displayNum = state.displayNum;
+    final calcNum = state.calcNum;
+    final calcResult = calcNum != 0 ? calcNum - displayNum : displayNum;
+    state = state.copyWith(
+        calcNum: calcResult,
+        displayNum: calcResult,
+        calcMark: "➖",
+        calcType: CALC_TYPE.sub);
   }
 
   /// 掛け算
   void multiplication() {
-    state = state.copyWith(calcType: CALC_TYPE.multi);
+    final displayNum = state.displayNum;
+    final calcNum = state.calcNum;
+    final calcResult = calcNum != 0 ? calcNum * displayNum : displayNum;
+    state = state.copyWith(
+        calcNum: calcResult,
+        displayNum: calcResult,
+        calcMark: "✖️",
+        calcType: CALC_TYPE.multi);
   }
 
   /// 割り算
   void division() {
-    state = state.copyWith(calcType: CALC_TYPE.div);
+    final displayNum = state.displayNum;
+    final calcNum = state.calcNum;
+    final calcResult = calcNum != 0 ? calcNum / displayNum : displayNum;
+    state = state.copyWith(
+        calcNum: calcResult,
+        displayNum: calcResult,
+        calcMark: "➗",
+        calcType: CALC_TYPE.div);
+  }
+
+  /// イコール
+  void equal() {
+    final calcType = state.calcType;
+    final displayNum = state.displayNum;
+    final calcNum = state.calcNum;
+    switch (calcType) {
+      case CALC_TYPE.add:
+        final calcResult = calcNum + displayNum;
+        state = state.copyWith(
+            calcNum: calcResult, displayNum: calcResult, calcMark: "");
+        break;
+      case CALC_TYPE.sub:
+        final calcResult = calcNum - displayNum;
+        state = state.copyWith(
+            calcNum: calcResult, displayNum: calcResult, calcMark: "");
+        break;
+      case CALC_TYPE.multi:
+        final calcResult = calcNum * displayNum;
+        state = state.copyWith(
+            calcNum: calcResult, displayNum: calcResult, calcMark: "");
+        break;
+      case CALC_TYPE.div:
+        final calcResult = calcNum / displayNum;
+        state = state.copyWith(
+            calcNum: calcResult, displayNum: calcResult, calcMark: "");
+        break;
+    }
   }
 
   /// 最後に入力した数字を消す
   void backSpace() {
     var displayNum = state.displayNum;
     displayNum = (displayNum / 10).floor().toDouble();
-    state = state.copyWith(displayNum: displayNum);
+    state = displayNum != 0
+        ? state.copyWith(displayNum: displayNum)
+        : state.copyWith(displayNum: displayNum, calcMark: "");
   }
 
   /// 表示されている数字のみをクリア
@@ -77,6 +141,6 @@ class CalcPageController extends StateNotifier<CalcPageState> {
 
   /// 表示されている数字、計算結果もクリアする
   void allClear() {
-    state = state.copyWith(calcNum: 0, displayNum: 0);
+    state = state.copyWith(calcNum: 0, displayNum: 0, calcMark: "");
   }
 }

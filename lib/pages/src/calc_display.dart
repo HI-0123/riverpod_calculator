@@ -13,9 +13,22 @@ class CalcDisplay extends StatelessWidget {
     return Consumer(builder: (context, ref, _) {
       final displayNum =
           ref.watch(calcPageProvider.select((s) => s.stringDisplayNum));
-      return Text(
-        displayNum,
-        style: const TextStyle(fontSize: 32.0),
+      final calcMark = ref.watch(calcPageProvider.select((s) => s.calcMark));
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          calcMark != null
+              ? Text(
+                  calcMark,
+                  style: const TextStyle(fontSize: 16.0),
+                )
+              : Container(),
+          const SizedBox(width: 24.0),
+          Text(
+            displayNum,
+            style: const TextStyle(fontSize: 32.0),
+          ),
+        ],
       );
     });
   }

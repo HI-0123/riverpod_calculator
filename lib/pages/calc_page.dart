@@ -32,8 +32,8 @@ class CalcPage extends StatelessWidget {
                       onPressed: notifier.allClear,
                     ),
                     FunctionButton(
-                      "％",
-                      onPressed: () {},
+                      "BS",
+                      onPressed: notifier.backSpace,
                     ),
                     FunctionButton(
                       "÷",
@@ -78,16 +78,8 @@ class CalcPage extends StatelessWidget {
                   children: [
                     const NumButton(0),
                     FunctionButton(
-                      ".",
-                      onPressed: () {},
-                    ),
-                    FunctionButton(
-                      "BS",
-                      onPressed: notifier.backSpace,
-                    ),
-                    FunctionButton(
                       "＝",
-                      onPressed: () {},
+                      onPressed: notifier.equal,
                     ),
                   ],
                 ),
