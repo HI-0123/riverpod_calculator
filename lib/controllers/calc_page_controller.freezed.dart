@@ -22,12 +22,14 @@ class _$CalcPageStateTearOff {
       {double calcNum = 0,
       double displayNum = 0,
       String? calcMark,
-      CALC_TYPE? calcType}) {
+      CALC_TYPE? calcType,
+      dynamic isCalculated = false}) {
     return _CalcPageState(
       calcNum: calcNum,
       displayNum: displayNum,
       calcMark: calcMark,
       calcType: calcType,
+      isCalculated: isCalculated,
     );
   }
 }
@@ -41,6 +43,7 @@ mixin _$CalcPageState {
   double get displayNum => throw _privateConstructorUsedError;
   String? get calcMark => throw _privateConstructorUsedError;
   CALC_TYPE? get calcType => throw _privateConstructorUsedError;
+  dynamic get isCalculated => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CalcPageStateCopyWith<CalcPageState> get copyWith =>
@@ -56,7 +59,8 @@ abstract class $CalcPageStateCopyWith<$Res> {
       {double calcNum,
       double displayNum,
       String? calcMark,
-      CALC_TYPE? calcType});
+      CALC_TYPE? calcType,
+      dynamic isCalculated});
 }
 
 /// @nodoc
@@ -74,6 +78,7 @@ class _$CalcPageStateCopyWithImpl<$Res>
     Object? displayNum = freezed,
     Object? calcMark = freezed,
     Object? calcType = freezed,
+    Object? isCalculated = freezed,
   }) {
     return _then(_value.copyWith(
       calcNum: calcNum == freezed
@@ -92,6 +97,10 @@ class _$CalcPageStateCopyWithImpl<$Res>
           ? _value.calcType
           : calcType // ignore: cast_nullable_to_non_nullable
               as CALC_TYPE?,
+      isCalculated: isCalculated == freezed
+          ? _value.isCalculated
+          : isCalculated // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -107,7 +116,8 @@ abstract class _$CalcPageStateCopyWith<$Res>
       {double calcNum,
       double displayNum,
       String? calcMark,
-      CALC_TYPE? calcType});
+      CALC_TYPE? calcType,
+      dynamic isCalculated});
 }
 
 /// @nodoc
@@ -127,6 +137,7 @@ class __$CalcPageStateCopyWithImpl<$Res>
     Object? displayNum = freezed,
     Object? calcMark = freezed,
     Object? calcType = freezed,
+    Object? isCalculated = freezed,
   }) {
     return _then(_CalcPageState(
       calcNum: calcNum == freezed
@@ -145,6 +156,8 @@ class __$CalcPageStateCopyWithImpl<$Res>
           ? _value.calcType
           : calcType // ignore: cast_nullable_to_non_nullable
               as CALC_TYPE?,
+      isCalculated:
+          isCalculated == freezed ? _value.isCalculated : isCalculated,
     ));
   }
 }
@@ -153,7 +166,11 @@ class __$CalcPageStateCopyWithImpl<$Res>
 
 class _$_CalcPageState extends _CalcPageState {
   const _$_CalcPageState(
-      {this.calcNum = 0, this.displayNum = 0, this.calcMark, this.calcType})
+      {this.calcNum = 0,
+      this.displayNum = 0,
+      this.calcMark,
+      this.calcType,
+      this.isCalculated = false})
       : super._();
 
   @JsonKey()
@@ -166,10 +183,13 @@ class _$_CalcPageState extends _CalcPageState {
   final String? calcMark;
   @override
   final CALC_TYPE? calcType;
+  @JsonKey()
+  @override
+  final dynamic isCalculated;
 
   @override
   String toString() {
-    return 'CalcPageState(calcNum: $calcNum, displayNum: $displayNum, calcMark: $calcMark, calcType: $calcType)';
+    return 'CalcPageState(calcNum: $calcNum, displayNum: $displayNum, calcMark: $calcMark, calcType: $calcType, isCalculated: $isCalculated)';
   }
 
   @override
@@ -181,7 +201,9 @@ class _$_CalcPageState extends _CalcPageState {
             const DeepCollectionEquality()
                 .equals(other.displayNum, displayNum) &&
             const DeepCollectionEquality().equals(other.calcMark, calcMark) &&
-            const DeepCollectionEquality().equals(other.calcType, calcType));
+            const DeepCollectionEquality().equals(other.calcType, calcType) &&
+            const DeepCollectionEquality()
+                .equals(other.isCalculated, isCalculated));
   }
 
   @override
@@ -190,7 +212,8 @@ class _$_CalcPageState extends _CalcPageState {
       const DeepCollectionEquality().hash(calcNum),
       const DeepCollectionEquality().hash(displayNum),
       const DeepCollectionEquality().hash(calcMark),
-      const DeepCollectionEquality().hash(calcType));
+      const DeepCollectionEquality().hash(calcType),
+      const DeepCollectionEquality().hash(isCalculated));
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +226,8 @@ abstract class _CalcPageState extends CalcPageState {
       {double calcNum,
       double displayNum,
       String? calcMark,
-      CALC_TYPE? calcType}) = _$_CalcPageState;
+      CALC_TYPE? calcType,
+      dynamic isCalculated}) = _$_CalcPageState;
   const _CalcPageState._() : super._();
 
   @override
@@ -214,6 +238,8 @@ abstract class _CalcPageState extends CalcPageState {
   String? get calcMark;
   @override
   CALC_TYPE? get calcType;
+  @override
+  dynamic get isCalculated;
   @override
   @JsonKey(ignore: true)
   _$CalcPageStateCopyWith<_CalcPageState> get copyWith =>
