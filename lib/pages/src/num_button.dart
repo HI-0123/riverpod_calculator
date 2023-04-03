@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_calculator/controllers/calc_page_controller.dart';
+import 'package:riverpod_calculator/controllers/pages/calc_page/calc_page_controller.dart';
 
-class NumButton extends StatelessWidget {
+import '../../types/types.dart';
+
+class NumButton extends ConsumerWidget {
   const NumButton(
-    this.num, {
+    this.type, {
     Key? key,
   }) : super(key: key);
 
-  final double num;
+  final NumberType type;
 
   @override
-  Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, _) {
-        return Expanded(
-          child: TextButton(
-            onPressed: () => ref.read(calcPageProvider.notifier).display(num),
-            child: Text(
-              num.toInt().toString(),
-              style: const TextStyle(
-                fontSize: 24.0,
-              ),
-            ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Expanded(
+      child: TextButton(
+        onPressed: () => ref.read(calcPageProvider.notifier).inputNum(type.num),
+        child: Text(
+          type.num.toString(),
+          style: TextStyle(
+            fontSize: 24.0,
+            color: Theme.of(context).primaryColor,
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

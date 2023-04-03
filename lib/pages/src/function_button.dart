@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_calculator/controllers/calc_page_controller.dart';
+
+import '../../types/types.dart';
 
 class FunctionButton extends StatelessWidget {
   const FunctionButton(
-    this.mark, {
+    this.type, {
     Key? key,
     required this.onPressed,
   }) : super(key: key);
 
-  final String mark;
+  final FunctionType type;
   final void Function() onPressed;
 
   @override
@@ -17,12 +17,7 @@ class FunctionButton extends StatelessWidget {
     return Expanded(
       child: TextButton(
         onPressed: onPressed,
-        child: Text(
-          mark,
-          style: const TextStyle(
-            fontSize: 24.0,
-          ),
-        ),
+        child: type.icon,
       ),
     );
   }
